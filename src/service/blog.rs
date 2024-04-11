@@ -6,7 +6,7 @@ use hyper::{Body, Error, Method, Request, StatusCode};
 use hyper_tls::HttpsConnector;
 use std::fs;
 use chrono::{DateTime, TimeZone};
-use chrono_tz::Tz;
+use chrono_tz::CN::Shanghai;
 
 // 请求github api
 #[tokio::main]
