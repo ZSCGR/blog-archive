@@ -64,8 +64,10 @@ fn handle_issues(issues_list: &Vec<IssuesResponse>) -> String {
     for issue in issues_list {
         // 将日期字符串解析为 DateTime<Utc> 类型
         let parsed_date_time = DateTime::parse_from_rfc3339(&issue.created_at).unwrap();
+        //UTC +8
+        let shanghai_time = parsed_date_time.with_timezone(&Shanghai);
         // 格式化日期和时间为字符串
-        let formatted_date_time = parsed_date_time.format("%Y-%m-%d %H:%M:%S").to_string();
+        let formatted_date_time = shanghai_time.format("%Y-%m-%d %H:%M:%S").to_string();
         text.push_str(
             format!(
                 "- [{}]({}) - {}\n",
