@@ -6,7 +6,7 @@ use hyper::{Body, Error, Method, Request, StatusCode};
 use hyper_tls::HttpsConnector;
 use std::fs;
 use chrono::{DateTime, TimeZone};
-use chrono_tz::CN::Shanghai;
+use chrono_tz::Asia::Shanghai;
 
 // 请求github api
 #[tokio::main]
@@ -67,7 +67,7 @@ fn handle_issues(issues_list: &Vec<IssuesResponse>) -> String {
         // 将日期字符串解析为 DateTime<Utc> 类型
         let parsed_date_time = DateTime::parse_from_rfc3339(&issue.created_at).unwrap();
         //UTC +8
-        let shanghai_time = parsed_date_time.with_timezone(&Asia/Shanghai);
+        let shanghai_time = parsed_date_time.with_timezone(&Shanghai);
         // 格式化日期和时间为字符串
         let formatted_date_time = shanghai_time.format("%Y-%m-%d %H:%M:%S").to_string();
         text.push_str(
