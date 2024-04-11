@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: sync blog
-        uses: zhangwt-cn/blog-archive@main
+        uses: ZSCGR/blog-archive@main
         with:
           api-github-token: ${{ secrets.API_GITHUB_TOKEN }}
           repo: ${{ secrets.REPO }}
